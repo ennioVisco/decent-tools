@@ -1,6 +1,5 @@
 decentmon.native
-setup.data
-setup.ml
+setup.*
 myocamlbuild.ml
 _tags
 _build/
