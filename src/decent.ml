@@ -108,7 +108,7 @@ let speclist = [
   ("-prt_trace_mess", Arg.Bool  (fun prttracemess -> print_trace_and_mess_stats := prttracemess),     "bool : print trace and number of messages statistics [Mon]");
   ("-prt_delay", Arg.Bool  (fun prtdelay -> print_delay_stats := prtdelay),     "bool : print delay statistics [Mon]");
   ("-prt_full", Arg.Bool  (fun prtfull -> print_full_stats := prtfull),     "bool : print full statistics [Mon]");
-  ("-prt_debug", Arg.Bool (fun prtdebug -> print_debug := prtdebug), "bool : print debug infos about enforcement [Enf]");
+  ("-prt_full_stats", Arg.Bool (fun prtdebug -> print_debug := prtdebug), "bool : print statistics of all the enforcement runs [Enf]");
   ("-flipcoin", Arg.Unit (fun x -> Trace.the_distrib := FLIPCOIN), ": use the flipcoin probability distribution (uniform distribution with probability 0.5) [Mon/Enf]");
   ("-bernouilli", Arg.Float (fun seed -> Trace.the_distrib := BERNOUILLI; Trace.seed := seed), "float : use the BERNOUILLI probability distribution (uniform distribution with a probability given as an argument) [Mon/Enf]");
   ("-expo", Arg.Float (fun seed -> Trace.the_distrib := EXPO; Trace.seed := seed), "float : use the EXPONENTIAL probability distribution (the rate parameter is given as an argument) [Mon/Enf]");

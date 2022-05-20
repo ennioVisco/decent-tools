@@ -19,6 +19,6 @@ rm *.txt
 cd ../../../..
 
 make decent
-./decent.native -enforce true -n 1000 -st 100 -sf 6 -multi_dalpha scripts/enforcement/experiment_3/alphabets -n_alpha 6 -keep_samples true -prod_tex true -seed $SEED
+./decent.native -enforce true -n 1000 -st 100 -sf 6 -multi_dalpha scripts/enforcement/experiment_3/alphabets -n_alpha 6 -keep_samples true -seed $SEED
 
 mv -t ${SCRIPT_DIR} *.txt
