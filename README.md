@@ -4,7 +4,7 @@ Current Version: 3.1.
 
 ---
 
-## 1 Description
+## 1. Description
 
 ### Overview
 
@@ -38,7 +38,7 @@ LTL formulae are enforced using three different algorithms:
 1. by using both decentralised approach we introduced (see the full paper for more details), i.e. each trace is read by a separate monitor, and
 2. by using a "centralized" orchestration-based algorithm: we merge the traces to a single, global trace and then use a “central monitor” for the formula (i.e., all local monitors send their respective events to the central monitor who makes the decisions regarding the trace).
 
-## 2 Requirements
+## 2. Requirements
 
 Decent requires GNU Make, [OCaml](https://ocaml.org) and a few OCaml extensions which can be easily installed with [opam](https://opam.ocaml.org).
 Additional required packages are:
@@ -115,7 +115,7 @@ make install
 ```
 make Decent
 ```
-## 4 Running Decent
+## 4. Running Decent
 
 To run the benchmark, it is simply needed to run the executable file "decent" (either native or bytecode) with appropriate options.
 Different kinds of benchmarks are implemented. Options required for each kind are described below.
@@ -176,8 +176,8 @@ The options used for this benchamrk are:
 - `-n_alpha [integer>0]`: specifies the number of distributed alphabets in the file.
 
 Other options are also mandatory:
-- `-n [integer>0]` to indicate the number of formulae to be enforced for each formula size,
-- `-st [integer>0]` to indicate the size of the trace against which formulae will be enforced,
+- `-n [integer>0]` to indicate the number of formulae to be enforced for each formula size.
+- `-st [integer>0]` to indicate the size of the trace against which formulae will be enforced.
 
 ### Combining benchmarks
 It is possible to perform multiple benchmarks at the same time.
@@ -207,7 +207,7 @@ When storing the results, the output displayed on the terminal is also stored in
 
 A full list of options is given in Appendix D.
 
-## 5 Remarks about the tool
+## 5. Remarks about the tool
 Some executions may take a very long time to finish (more than 10 minutes). This is more common on formulas of size >6 and in the third experiment on the larger systems. This is due to the explosion of formulas size in some cases (caused by the progression function). This happens when we generate some "bad" formulas, i.e. formulas containing several interleaved Until operators with Globally and/or Eventually operators (hence the fact that it is more common on larger formulas).
 
 Also, when using the `prt_full_stats` option, some additional debugging informations are displayed in the full statistics.
@@ -480,6 +480,9 @@ The following options are used:
  - A seed is set for the random generation ($SEED contains a random value between 1 and 10000) that is generated beforehand. We do this because we want to enforce the same formulas/traces using both the pessimistic and optimistic mode to compare them.
  - The optimistic mode is used (this scripts also runs the same command without `-optimistic true` to run the same experiment with the pessimistic mode).
 
+We got the following result from a run of this benchmark:
+![alt text](doc_images/Experiment_1.png)
+
 Another example for monitoring:
 ```
 ./decent.native -n 500 -nb_samples 10 -msf 3 -st 1000 -dalpha "{a|b|c}" -prt_full true -keep_samples true -file log.txt
@@ -514,6 +517,10 @@ The following options are used:
  - A seed is set for the random generation ($SEED contains a random value between 1 and 10000) that is generated beforehand. We do this because we want to enforce the same formulas/traces using both the pessimistic and optimistic mode to compare them.
  - The optimistic mode is used (this scripts also runs the same command without `-optimistic true` to run the same experiment with the pessimistic mode).
 
+We got the following result from a run of this benchmark:
+![alt text](doc_images/Experiment_2_1.png)
+![alt text](doc_images/Experiment_2_2.png)
+
 Another example for monitoring:
 ```
 /decent.native -n 500 -nb_samples 10 -abs true -exis true -univ true -prec true -resp true -precc true -respc true -consc true -st 1000 -dalpha "{a|b|c}" -prt_full true -keep_samples true -file log.txt
@@ -537,6 +544,10 @@ One can consult `log.txt to look at the individual sample experiments.
 ### Further Examples
 
 The script `scripts/enforcement/experiment_3.sh` runs a benchmark with different system architecture (which are given in `scripts/enforcement/experiment_3/alphabets`).
+
+We got the following result from a run of this benchmark:
+![alt text](doc_images/Experiment_3.png)
+
 
 Directory `example_benchs` contains further monitoring examples.
 
