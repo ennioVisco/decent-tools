@@ -1,0 +1,6 @@
+decentmon.native
+setup.data
+setup.ml
+myocamlbuild.ml
+_tags
+_build/
