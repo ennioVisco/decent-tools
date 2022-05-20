@@ -1,5 +1,6 @@
-decentmon.native
+decent.native
 setup.*
 myocamlbuild.ml
 _tags
 _build/
+scripts/enforcement/experiment_*/*/*.txt

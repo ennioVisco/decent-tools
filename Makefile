@@ -6,7 +6,7 @@ install:
 	ocaml setup.ml -configure
 	ocaml setup.ml -build
 
-decentmon:
+decent:
 	ocaml setup.ml -build
 
 uninstall:
@@ -15,7 +15,7 @@ uninstall:
 	rm -f setup.log
 	rm -f myocamlbuild.ml
 	rm -rf _build
-	rm -f decentmon.native
+	rm -f decent.native
 	rm -f _tags
 	
 clean:

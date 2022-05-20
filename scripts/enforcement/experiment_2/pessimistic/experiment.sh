@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script used to perform the first experiment and generate the associated graphs
+# Script used to perform the second experiment and generate the associated graphs
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -18,8 +18,8 @@ rm *.txt
 
 cd ../../../..
 
-make decentmon
-./decentmon.native -enforce true -n 1000 -st 100 -abs true -univ true -exis true -bexis true -prec true -resp true -precc true -respc true -consc true -dalpha "{a1,a2|b1,b2|c1,c2}" -keep_samples true -prod_tex true -seed $SEED
+make decent
+./decent.native -enforce true -n 1000 -st 100 -abs true -univ true -exis true -bexis true -prec true -resp true -precc true -respc true -consc true -dalpha "{a1,a2|b1,b2|c1,c2}" -keep_samples true -prod_tex true -seed $SEED
 
 mv -t ${SCRIPT_DIR} *.txt
 

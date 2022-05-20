@@ -18,8 +18,8 @@ rm *.txt
 
 cd ../../../..
 
-make decentmon
-./decentmon.native -enforce true -n 1000 -st 100 -msf 6 -dalpha "{a1,a2|b1,b2|c1,c2}" -keep_samples true -prod_tex true -seed $SEED -optimistic true
+make decent
+./decent.native -enforce true -n 1000 -st 100 -msf 6 -dalpha "{a1,a2|b1,b2|c1,c2}" -keep_samples true -prod_tex true -seed $SEED -optimistic true
 
 mv -t ${SCRIPT_DIR} *.txt
 

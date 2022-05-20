@@ -1,4 +1,4 @@
-EXEC_NAME=decentmon.native
+EXEC_NAME=decent.native
 
 NB_TESTS_SMALL=1000
 NB_SAMPLES_SMALL=10

@@ -6,12 +6,12 @@ RUN opam switch create 4.02.0
 RUN opam install --unlock-base oasis camlp4 batteries ocamlbuild ocamlfind
 # Create Workspace
 USER root
-RUN useradd -ms /bin/bash decentmon
-RUN passwd -d decentmon
-RUN mkdir -p /home/decentmon
-USER decentmon
-RUN chown decentmon /home/decentmon
-WORKDIR /home/decentmon
+RUN useradd -ms /bin/bash decent
+RUN passwd -d decent
+RUN mkdir -p /home/decent
+USER decent
+RUN chown decent /home/decent
+WORKDIR /home/decent
 # Step 3: Retrieving source files...
 ADD _oasis .
 COPY init.sh .
@@ -23,6 +23,6 @@ ADD src.zip .
 USER root
 RUN chmod +x init.sh
 RUN chmod +x experiment_*.sh
-USER decentmon
+USER decent
 RUN ./init.sh
 

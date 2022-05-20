@@ -16,7 +16,7 @@ let parenthesize2 (s:string) : string = "["^s^"]"
 
 let welcome () = 
   print_endline("######################################################");
-  print_endline("############ D E C E N T   M O N I T O R #############");
+  print_endline("#################### D E C E N T #####################");
   print_endline("######################################################\n")
  
 let print_separation_line_eval () =

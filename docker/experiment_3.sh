@@ -9,4 +9,4 @@ else
     exit 0
 fi
 
-./decentmon.native -enforce true -n 1000 -st 100 -sf 6 -multi_dalpha alphabets -n_alpha 6 -keep_samples true -optimistic $OPTIMISTIC
+./decent.native -enforce true -n 1000 -st 100 -sf 6 -multi_dalpha alphabets -n_alpha 6 -keep_samples true -optimistic $OPTIMISTIC
