@@ -1,0 +1,54 @@
+\hline\hline
+Cent. & \multirow{3}{*}{abs} & 0.37 & 3. & 4.502 & 180.414 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.37 & 0.629 & 79.477 & 181.993 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.372 & 0.472 & 39.586 & 116.784 \\
+\hline\hline
+Cent. & \multirow{3}{*}{exist} & 0.162 & 3. & 4.503 & 201.799 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.162 & 0.684 & 77.222 & 199.828 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.162 & 0.463 & 40.489 & 119.418 \\
+\hline\hline
+Cent. & \multirow{3}{*}{bexist} & 0.242 & 3. & 4.502 & 743.064 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.242 & 0.586 & 389.644 & 809.429 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.242 & 0.392 & 211.063 & 732.576 \\
+\hline\hline
+Cent. & \multirow{3}{*}{unive} & 0.351 & 3. & 4.503 & 182.679 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.351 & 0.684 & 80.107 & 185.686 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.352 & 0.526 & 40.682 & 119.518 \\
+\hline\hline
+Cent. & \multirow{3}{*}{prec} & 0.149 & 3. & 4.502 & 347.696 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.149 & 1.087 & 136.227 & 350.039 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.14 & 0.63 & 55.954 & 164.459 \\
+\hline\hline
+Cent. & \multirow{3}{*}{resp} & 0.039 & 3. & 4.501 & 637.256 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.039 & 1.084 & 252.875 & 618.055 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.039 & 0.729 & 100.551 & 337.767 \\
+\hline\hline
+Cent. & \multirow{3}{*}{pchain} & 0.191 & 3. & 4.503 & 640.231 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.191 & 1.037 & 218.258 & 634.57 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.19 & 0.656 & 90.923 & 334.564 \\
+\hline\hline
+Cent. & \multirow{3}{*}{rchain} & 0.054 & 3. & 4.503 & 1914.35 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.054 & 1.073 & 516.788 & 1977.16 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.056 & 0.87 & 185.848 & 1042.83 \\
+\hline\hline
+Cent. & \multirow{3}{*}{cchain} & 0.193 & 3. & 4.504 & 1441.1 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Global & & 0.193 & 1.255 & 491.208 & 1362.17 \\
+      \cline{1-1}\cline{3-6}\cline{8-11}
+      Local & & 0.204 & 0.955 & 163.378 & 623.357 \\

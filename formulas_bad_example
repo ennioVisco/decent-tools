@@ -1,0 +1,7 @@
+Formula to enforce: 
+Ev (Until (Glob (Until (Until (And (Or (Neg (Var "a1"), Var "a2"), Or (Neg (Var "a2"), Var "a1")), Next (Var "a2")), Ev (And (Var "b1", Var "c2")))), Glob (Ev (Next (Var "c1")))))
+F ([G ([[[[!(a1) | a2] & [!(a2) | a1]] U X (a2)] U F ([b1 & c2])]) U G (F (X (c1)))])
+
+Formula to enforce: 
+Glob (Neg (Until (Ev (Glob (Var "a2")), Ev (Var "c1"))))
+G (!([F (G (a2)) U F (c1)]))

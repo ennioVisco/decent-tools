@@ -1,0 +1,343 @@
+
+####################################################################################################
+####################################################################################################
+
+#################### Decentralized alphabet used: {a1,a2|b1,b2|c1,c2} ####################
+
+
+#######################################
+############### ABSENCE ###############
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.37          Variance: 0.21
+Average length of the trace: 85.251          Variance: 36.35
+Average number of messages: 0.629          Variance: 0.65
+Average size of the messages: 79.477          Variance: 88.73
+Average maximal size of the tcl: 181.993          Variance: 172.8
+
+               ------- LOCAL -------
+Average number of modifications: 0.372          Variance: 0.21
+Average length of the trace: 85.251          Variance: 36.35
+Average number of messages: 0.472          Variance: 0.55
+Average size of the messages: 39.586          Variance: 41.45
+Average maximal size of the tcl: 116.784          Variance: 93.42
+
+Average number of different events between the enforced traces (comparing global and local version): 1.805
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.005
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.37          Variance: 0.21
+Average length of the trace: 85.251          Variance: 36.35
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.502          Variance: 0.08
+Average maximal size of the tcl: 180.414          Variance: 171.7
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 1.805
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.005
+
+#######################################
+############## EXISTENCE ##############
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.162          Variance: 0.28
+Average length of the trace: 41.741          Variance: 48.3
+Average number of messages: 0.684          Variance: 0.63
+Average size of the messages: 77.222          Variance: 84.15
+Average maximal size of the tcl: 199.828          Variance: 191.09
+
+               ------- LOCAL -------
+Average number of modifications: 0.162          Variance: 0.28
+Average length of the trace: 41.741          Variance: 48.3
+Average number of messages: 0.463          Variance: 0.43
+Average size of the messages: 40.489          Variance: 41.21
+Average maximal size of the tcl: 119.418          Variance: 87.94
+
+Average number of different events between the enforced traces (comparing global and local version): 0.276
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.162          Variance: 0.28
+Average length of the trace: 41.741          Variance: 48.3
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.503          Variance: 0.08
+Average maximal size of the tcl: 201.799          Variance: 191.19
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.276
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.
+
+#######################################
+########## BOUNDED EXISTENCE ##########
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.242          Variance: 0.22
+Average length of the trace: 83.961          Variance: 37.38
+Average number of messages: 0.586          Variance: 0.67
+Average size of the messages: 389.644          Variance: 365.41
+Average maximal size of the tcl: 809.429          Variance: 625.04
+
+               ------- LOCAL -------
+Average number of modifications: 0.242          Variance: 0.22
+Average length of the trace: 83.961          Variance: 37.38
+Average number of messages: 0.392          Variance: 0.5
+Average size of the messages: 211.063          Variance: 205.99
+Average maximal size of the tcl: 732.576          Variance: 528.47
+
+Average number of different events between the enforced traces (comparing global and local version): 0.009
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.001
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.242          Variance: 0.22
+Average length of the trace: 83.961          Variance: 37.38
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.502          Variance: 0.08
+Average maximal size of the tcl: 743.064          Variance: 636.71
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.009
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.001
+
+#######################################
+############ UNIVERSALITY #############
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.351          Variance: 0.2
+Average length of the trace: 85.646          Variance: 35.98
+Average number of messages: 0.684          Variance: 0.63
+Average size of the messages: 80.107          Variance: 82.47
+Average maximal size of the tcl: 185.686          Variance: 159.42
+
+               ------- LOCAL -------
+Average number of modifications: 0.352          Variance: 0.2
+Average length of the trace: 85.646          Variance: 35.98
+Average number of messages: 0.526          Variance: 0.54
+Average size of the messages: 40.682          Variance: 39.66
+Average maximal size of the tcl: 119.518          Variance: 89.07
+
+Average number of different events between the enforced traces (comparing global and local version): 1.547
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.013
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.351          Variance: 0.2
+Average length of the trace: 85.646          Variance: 35.98
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.503          Variance: 0.08
+Average maximal size of the tcl: 182.679          Variance: 158.16
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 1.547
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.013
+
+#######################################
+############# PRECEDENCE ##############
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.149          Variance: 0.28
+Average length of the trace: 39.571          Variance: 48.11
+Average number of messages: 1.087          Variance: 0.65
+Average size of the messages: 136.227          Variance: 105.14
+Average maximal size of the tcl: 350.039          Variance: 307.97
+
+               ------- LOCAL -------
+Average number of modifications: 0.14          Variance: 0.26
+Average length of the trace: 39.613          Variance: 48.08
+Average number of messages: 0.63          Variance: 0.54
+Average size of the messages: 55.954          Variance: 43.55
+Average maximal size of the tcl: 164.459          Variance: 109.87
+
+Average number of different events between the enforced traces (comparing global and local version): 0.946
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.005
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.149          Variance: 0.28
+Average length of the trace: 39.571          Variance: 48.11
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.502          Variance: 0.08
+Average maximal size of the tcl: 347.696          Variance: 305.61
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.946
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.005
+
+#######################################
+############# RESPONSE ################
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.039          Variance: 0.11
+Average length of the trace: 76.142          Variance: 42.94
+Average number of messages: 1.084          Variance: 0.65
+Average size of the messages: 252.875          Variance: 237.68
+Average maximal size of the tcl: 618.055          Variance: 598.02
+
+               ------- LOCAL -------
+Average number of modifications: 0.039          Variance: 0.11
+Average length of the trace: 76.142          Variance: 42.94
+Average number of messages: 0.729          Variance: 0.53
+Average size of the messages: 100.551          Variance: 83.44
+Average maximal size of the tcl: 337.767          Variance: 291.75
+
+Average number of different events between the enforced traces (comparing global and local version): 0.257
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.001
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.039          Variance: 0.11
+Average length of the trace: 76.142          Variance: 42.94
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.501          Variance: 0.08
+Average maximal size of the tcl: 637.256          Variance: 578.75
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.257
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.001
+
+#######################################
+########## PRECEDENCE CHAIN ###########
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.191          Variance: 0.25
+Average length of the trace: 52.667          Variance: 49.61
+Average number of messages: 1.037          Variance: 0.67
+Average size of the messages: 218.258          Variance: 198.95
+Average maximal size of the tcl: 634.57          Variance: 836.18
+
+               ------- LOCAL -------
+Average number of modifications: 0.19          Variance: 0.24
+Average length of the trace: 52.68          Variance: 49.6
+Average number of messages: 0.656          Variance: 0.57
+Average size of the messages: 90.923          Variance: 82.5
+Average maximal size of the tcl: 334.564          Variance: 373.03
+
+Average number of different events between the enforced traces (comparing global and local version): 0.655
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.01
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.191          Variance: 0.25
+Average length of the trace: 52.667          Variance: 49.61
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.503          Variance: 0.08
+Average maximal size of the tcl: 640.231          Variance: 828.62
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.655
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.01
+
+#######################################
+########### RESPONSE CHAIN ############
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.054          Variance: 0.1
+Average length of the trace: 81.138          Variance: 39.61
+Average number of messages: 1.073          Variance: 0.6
+Average size of the messages: 516.788          Variance: 540.65
+Average maximal size of the tcl: 1977.16          Variance: 3451.8
+
+               ------- LOCAL -------
+Average number of modifications: 0.056          Variance: 0.11
+Average length of the trace: 81.163          Variance: 39.57
+Average number of messages: 0.87          Variance: 0.55
+Average size of the messages: 185.848          Variance: 163.83
+Average maximal size of the tcl: 1042.83          Variance: 1636.5
+
+Average number of different events between the enforced traces (comparing global and local version): 1.633
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.02
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.054          Variance: 0.1
+Average length of the trace: 81.138          Variance: 39.61
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.503          Variance: 0.08
+Average maximal size of the tcl: 1914.35          Variance: 3247.7
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 1.633
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.02
+
+#######################################
+########## CONSTRAINED CHAIN ##########
+#######################################
+
+############## DECENTRALIZED VERSION ################
+               ------- GLOBAL ------
+Average number of modifications: 0.193          Variance: 0.21
+Average length of the trace: 83.02          Variance: 38.03
+Average number of messages: 1.255          Variance: 0.67
+Average size of the messages: 491.208          Variance: 445.61
+Average maximal size of the tcl: 1362.17          Variance: 1560.43
+
+               ------- LOCAL -------
+Average number of modifications: 0.204          Variance: 0.22
+Average length of the trace: 83.06          Variance: 37.97
+Average number of messages: 0.955          Variance: 0.59
+Average size of the messages: 163.378          Variance: 122.29
+Average maximal size of the tcl: 623.357          Variance: 571.98
+
+Average number of different events between the enforced traces (comparing global and local version): 3.974
+Average number of event with a different number of modifications between the enforced traces (comparing global and local version): 0.274
+
+############### CENTRALIZED VERSION #################
+Average number of modifications: 0.193          Variance: 0.21
+Average length of the trace: 83.02          Variance: 38.03
+Average number of messages: 3.          Variance: 0.
+Average size of the messages: 4.504          Variance: 0.08
+Average maximal size of the tcl: 1441.1          Variance: 1562.85
+
+Average number of different events between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 3.974
+
+Average number of event with a different number of modifications between the enforced traces
+                                   - Comparing the centralized and decentralized global version: 0.
+                                   - Comparing the centralized and decentralized local version: 0.274
+
+####################################################################################################
+####################################################################################################
+
