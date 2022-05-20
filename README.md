@@ -160,8 +160,8 @@ Similarly, several other options are mandatory:
 ### Benchmark for specific formulas
 
 It is also possible to give specific formulas as input by writing them in a file and then using the following options:
--`-specific_f [filename]`: parses the formulas in the given file to enforce them against a randomly generated trace.
--`-nf [integer>0]`: specifies the number of formulas contained in the file.
+- `-specific_f [filename]`: parses the formulas in the given file to enforce them against a randomly generated trace.
+- `-nf [integer>0]`: specifies the number of formulas contained in the file.
 
 As in the previous two benchmarks, the following other options are mandatory:
 - `-n [integer>0]` to indicate the number of formulae to be enforced for each formula size,
@@ -172,8 +172,8 @@ As in the previous two benchmarks, the following other options are mandatory:
 
 Similarly to the previous one, it is possible to give multiple distributed alphabets as input by writing them in a file, each representing a different architecture of the system.
 The options used for this benchamrk are:
--`-multi_dalpha [filename]`: parses the distributed alphabets in the given file and performs the enforcement for each of them.
--`-n_alpha [integer>0]`: specifies the number of distributed alphabets in the file.
+- `-multi_dalpha [filename]`: parses the distributed alphabets in the given file and performs the enforcement for each of them.
+- `-n_alpha [integer>0]`: specifies the number of distributed alphabets in the file.
 
 Other options are also mandatory:
 - `-n [integer>0]` to indicate the number of formulae to be enforced for each formula size,
@@ -195,9 +195,9 @@ For example to enforce 10 formulas generated from the *Precedence* pattern on tr
 
 ### Other options
 There are also other options available:
--`flipcoin`, `bias`, `expo` and `beta` are used to pick which probability distribution is used when generating the traces (`flipcoin is used by default`).
--`-bias` causes the generated formulas to favor one component.
--`-eval` performs enforcement once with every distributed alphabets that can be generated from the given alphabet. Note that for this option, `-alpha [string_representation_of_an_alphabet]` is a mandatory option (replacing `-dalpha`)
+- `flipcoin`, `bias`, `expo` and `beta` are used to pick which probability distribution is used when generating the traces (`flipcoin is used by default`).
+- `-bias` causes the generated formulas to favor one component.
+- `-eval` performs enforcement once with every distributed alphabets that can be generated from the given alphabet. Note that for this option, `-alpha [string_representation_of_an_alphabet]` is a mandatory option (replacing `-dalpha`)
 
 By default, only the full statistics over all the enforced formula will be displayed.
 By using `-prt_full_stats [boolean]`, it is possible to display the statistics of every run individually.
