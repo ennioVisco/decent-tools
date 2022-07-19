@@ -15,6 +15,9 @@
 
 (documentation https://gitlab.inria.fr/monitoring/decent)
 
+
+; TODO: set a local opam switch
+
 (package
  (name decent)
  (synopsis "An OCaml Benchmark for Decentralised Enforcement of LTL Formulae")
@@ -23,5 +26,4 @@
  (tags
   (monitoring enforcement "decentralized analysis" LTL)))
   
-
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
