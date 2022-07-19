@@ -1,17 +1,18 @@
 open Batteries
 open DynArray
-open Decent.Alphabetevent
-open Decent.Alphabet_parser
-open Decent.Trace
-open Decent.Ltl
-open Decent.Ltl_parser
-open Decent.Architecture
-open Decent.Common_test
-open Decent.Config
-open Decent.Headers
-open Decent.Utils
+open Decent
+open Alphabetevent
+open Alphabet_parser
+open Trace
+open Ltl
+open Ltl_parser
+open Architecture
+open Common_test
+open Config
+open Headers
+open Utils
 
-let seed: int ref = ref 0
+let seed = ref 0
 let enforce = ref false
 let optimistic = ref false
 let print_debug = ref false
@@ -85,7 +86,7 @@ let usage = "usage: " ^ Sys.argv.(0) ^ " [-n int]"
 let speclist = [
   ("-seed", Arg.Int   (fun s -> seed := s), "int (<> 0) : sets a seed [Enf]");
   ("-enforce", Arg.Bool   (fun enf -> enforce := enf),  "bool : do enforcement instead of monitoring [Enf] ");
-  ("-optimistic", Arg.Bool   (fun alw_enf -> optimistic := alw_enf; always_enforce := not alw_enf), "bool : use the \"optimistic\" mode (always compute the alternatives regardless of whether there is a violation or not)");
+  ("-optimistic", Arg.Bool   (fun alw_enf -> optimistic := alw_enf; Common_test.always_enforce := not alw_enf), "bool : use the \"optimistic\" mode (always compute the alternatives regardless of whether there is a violation or not)");
   ("-specific_f", Arg.String   (fun f_name -> formula_file_name := f_name),   "filename : file containing specific formulas to enforce [Enf]");
   ("-nf", Arg.Int   (fun nf -> nb_formula := nf),  "int : number of specific formulas to enforce given in the file [Enf]");
   ("-n", Arg.Int    (fun n -> nbtests := n),  "int : the maximum number of tests to run to obtain one row benchmark (each test can result in a meaningful sample or not, e.g., in the case of a non-monitorable formula) [Mon/Enf]");
@@ -109,12 +110,12 @@ let speclist = [
   ("-prt_delay", Arg.Bool  (fun prtdelay -> print_delay_stats := prtdelay),     "bool : print delay statistics [Mon]");
   ("-prt_full", Arg.Bool  (fun prtfull -> print_full_stats := prtfull),     "bool : print full statistics [Mon]");
   ("-prt_full_stats", Arg.Bool (fun prtdebug -> print_debug := prtdebug), "bool : print statistics of all the enforcement runs [Enf]");
-  ("-flipcoin", Arg.Unit (fun x -> the_distrib := FLIPCOIN), ": use the flipcoin probability distribution (uniform distribution with probability 0.5) [Mon/Enf]");
-  ("-bernouilli", Arg.Float (fun s -> the_distrib := BERNOUILLI; seed := (truncate s)), "float : use the BERNOUILLI probability distribution (uniform distribution with a probability given as an argument) [Mon/Enf]");
-  ("-expo", Arg.Float (fun s -> the_distrib := EXPO; seed := (truncate s)), "float : use the EXPONENTIAL probability distribution (the rate parameter is given as an argument) [Mon/Enf]");
-  ("-beta", Arg.Tuple [Arg.Float (fun seed -> the_distrib := BETA; seeda := seed);
-                       Arg.Float (fun seed -> seedb := seed)], "float float: use the BETA probability distribution (the rate parameters are given as arguments) [Mon/Enf]");
-  ("-only_changes", Arg.Unit  (fun x -> mode := SEND_CHANGES),": components send the value of their propositions only if there is a change in its value. More precisely, if among the monitors, there is at least the value of one proposition that is modified wrt the previous event, the component has to send a message to the monitor [Mon]");
+  ("-flipcoin", Arg.Unit (fun x -> Trace.the_distrib := FLIPCOIN), ": use the flipcoin probability distribution (uniform distribution with probability 0.5) [Mon/Enf]");
+  ("-bernouilli", Arg.Float (fun seed -> Trace.the_distrib := BERNOUILLI; Trace.seed := seed), "float : use the BERNOUILLI probability distribution (uniform distribution with a probability given as an argument) [Mon/Enf]");
+  ("-expo", Arg.Float (fun seed -> Trace.the_distrib := EXPO; Trace.seed := seed), "float : use the EXPONENTIAL probability distribution (the rate parameter is given as an argument) [Mon/Enf]");
+  ("-beta", Arg.Tuple [Arg.Float (fun seed -> Trace.the_distrib := BETA; Trace.seeda := seed);
+                       Arg.Float (fun seed -> Trace.seedb := seed)], "float float: use the BETA probability distribution (the rate parameters are given as arguments) [Mon/Enf]");
+  ("-only_changes", Arg.Unit  (fun x -> Config.mode := SEND_CHANGES),": components send the value of their propositions only if there is a change in its value. More precisely, if among the monitors, there is at least the value of one proposition that is modified wrt the previous event, the component has to send a message to the monitor [Mon]");
   ("-bias", Arg.Unit    (fun _ -> bias := true),  ": bias the generation of formulae to favor one component [Mon/Enf] ");
   ("-precision", Arg.Int    (fun p -> precision := p),  "int : precision of numbers (number of decimals) [Mon/Enf]");
   ("-eval", Arg.Unit    (fun p -> eval := true),  ": uses every distributed alphabets that can be built from the given alphabet once [Mon/Enf]");
@@ -880,7 +881,7 @@ let _ =
     exit(1)
   );
 
-  if (!enforce && (!nb_samples <> 0 || !mode <> SEND_EVERYTHING || !print_delay_stats <> false || !print_trace_and_mess_stats <> false || !print_full_stats <> false)) then (
+  if (!enforce && (!nb_samples <> 0 || !Config.mode <> SEND_EVERYTHING || !print_delay_stats <> false || !print_trace_and_mess_stats <> false || !print_full_stats <> false)) then (
     print_endline "An unsupported option for enforcement was given to the program";
     exit(1)
   );
@@ -1020,7 +1021,7 @@ let _ =
   if (!sizetrace >0) then
     (
       print_endline("Each formula will be monitored against a freshly randomly generated trace of size: "^string_of_int !sizetrace);
-      print_endline ("The probability distribution that will be used for the trace is "^(match !the_distrib with FLIPCOIN -> "flipcoin" | BERNOUILLI -> "bernouilli" | EXPO -> "exponential" | BETA -> "beta"))
+      print_endline ("The probability distribution that will be used for the trace is "^(match !Trace.the_distrib with FLIPCOIN -> "flipcoin" | BERNOUILLI -> "bernouilli" | EXPO -> "exponential" | BETA -> "beta"))
     );
   if (not !enforce && !dalphabet_string <>"") then
     print_endline("Distributed alphabet used: "^ !dalphabet_string);
@@ -1028,7 +1029,7 @@ let _ =
   if (!alphabet_string <>"") then
     print_endline("Alphabet used: "^ !alphabet_string);
 
-  if (!mode = SEND_CHANGES)	then
+  if (!Common_test.mode = SEND_CHANGES)	then
     print_endline("Components send the value of their propositions only if there is a change in its value");
 
   if (!print_full_stats) then
