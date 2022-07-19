@@ -1,0 +1,44 @@
+opam-version: "2.0"
+name: "decent"
+version: "~dev"
+synopsis: "An OCaml Benchmark for Decentralised Enforcement of LTL Formulae"
+description: "A longer description"
+maintainer: "Florian Gallay"
+authors: ["Ylies Falcone" "Florian Gallay" "Ennio Visconti"]
+license: "LICENSE"
+tags: ["monitoring" "enforcement" "decentralized analysis" "LTL"]
+doc: "https://gitlab.inria.fr/monitoring/decent"
+depends: [
+  "base-bigarray" {= "base"}
+  "base-threads" {= "base"}
+  "base-unix" {= "base"}
+  "batteries" {= "3.5.1"}
+  "camlp-streams" {= "5.0.1"}
+  "camlp5" {= "8.00.03"}
+  "conf-perl" {= "2"}
+  "conf-perl-ipc-system-simple" {= "3"}
+  "conf-perl-string-shellquote" {= "3"}
+  "dune" {= "3.3.1"}
+  "num" {= "1.4"}
+  "ocaml" {= "4.14.0"}
+  "ocaml-base-compiler" {= "4.14.0"}
+  "ocaml-config" {= "2"}
+  "ocaml-options-vanilla" {= "1"}
+  "ocamlbuild" {= "0.14.1"}
+  "ocamlfind" {= "1.9.5"}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://gitlab.inria.fr/eviscont/decent.git"
