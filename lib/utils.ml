@@ -78,7 +78,7 @@ let rec div_list (l1: float list) (l2: float list) =
 let rec nb_diff_list (l1: 'a list) (l2: 'a list) =
   match l1, l2 with
       [], _ | _, [] -> 0
-    | hd1::tl1, hd2::tl2 -> if (mem hd1 l2) && (mem hd2 l1) then nb_diff_list tl1 tl2 else 1 + nb_diff_list tl1 tl2
+    | hd1::tl1, hd2::tl2 -> if (hd1 == hd2) then nb_diff_list tl1 tl2 else 1 + nb_diff_list tl1 tl2
 
 let make_list (size:int) (fill_function:int -> 'a):'a list =
   let rec list_of_indexes n = if n=1 then [1] else (list_of_indexes (n-1))@[n] in
