@@ -1,6 +1,32 @@
-decent.native
-setup.*
-myocamlbuild.ml
-_tags
-_build/
+_opam
+_build
+/_boot
+_perf
+*.install
+.merlin
+*.corrected
+
+# vim swap files
+*.swp
+*.swo
+
+# emacs lock files
+.#*
+
+# vscode settings
+.vscode
+
+# git-ps hooks
+.git-ps
+
+.duneboot.*
+/boot/*.cm*
+dune.exe
+Makefile.dev
+src/dune_rules/setup.ml
+
+# Mac directories
+.DS_Store
+
+# Decent extra files
 scripts/enforcement/experiment_*/*/*.txt

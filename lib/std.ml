@@ -51,7 +51,7 @@ let input_all ic =
     if n = 0 then
       let res = String.create total in
       let pos = total - ofs in
-      let _ = String.blit buf 0 res pos ofs in
+      let _ = String.blit (Bytes.to_string buf) 0 res pos ofs in
       let coll pos buf =
         let new_pos = pos - buf_len in
         String.blit buf 0 res new_pos buf_len;
@@ -62,7 +62,7 @@ let input_all ic =
       let new_ofs = ofs + n in
       let new_total = total + n in
       if new_ofs = buf_len then
-        loop (buf :: acc) new_total (String.create buf_len) 0
+        loop ((Bytes.to_string buf) :: acc) new_total (String.create buf_len) 0
       else loop acc new_total buf new_ofs in
   loop [] 0 (String.create buf_len) 0
 

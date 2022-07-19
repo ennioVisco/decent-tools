@@ -5,7 +5,7 @@ open Ltl
 open Trace       
 open Utils
 
-module PartialEvent = struct type t = d_event let compare = compare end
+module PartialEvent = struct type t = d_event let compare = (compare compare_event) end
 module Tcl = Map.Make(PartialEvent)
 type tcl = image Tcl.t
 

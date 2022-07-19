@@ -49,10 +49,11 @@ Additional required packages are:
   - ocamlfind
 
 Decent has been built in May 2022 with OCaml 4.08.1. Later versions of OCaml seem not compatible with camlp4.
+Note that OCaml 4.08.1 has been released in June 2019, therefore, if you install newer versions of OCaml, you would probably get a 2.1+ version of Opam CLI which is not compatible. However, you can easily switch to 2.0 by setting an environment variable, e.g. (for the current CLI session), `export OPAMCLI=2.0`.
 
 ## 3. Installation
 
-If you wan to try Decent without installing it, you can use a Docker file allowing to build a Docker image and run Decent within a container.
+If you want to try Decent without installing it, you can use a Docker file allowing to build a Docker image and run Decent within a container.
 
 Otherwise, in Section 3.2, you can find instructions to install Decent on your machine.
 

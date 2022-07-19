@@ -62,7 +62,7 @@ let nread i n =
 	if n = 0 then
 		""
 	else
-	let s = String.create n in
+	let s = Bytes.to_string (String.create n) in
 	let l = ref n in
 	let p = ref 0 in
 	try
@@ -116,7 +116,7 @@ let really_nread i n =
 	if n < 0 then invalid_arg "IO.really_nread";
 	if n = 0 then ""
 	else
-	let s = String.create n 
+	let s = Bytes.to_string (String.create n) 
 	in
 	ignore(really_input i s 0 n);
 	s
@@ -227,7 +227,7 @@ let input_string s =
 		in_input = (fun sout p l ->
 			if !pos >= len then raise No_more_input;
 			let n = (if !pos + l > len then len - !pos else l) in
-			String.unsafe_blit s !pos sout p n;
+			String.unsafe_blit s !pos (Bytes.of_string sout) p n;
 			pos := !pos + n;
 			n
 		);
@@ -257,7 +257,7 @@ let input_channel ch =
 				End_of_file -> raise No_more_input
 		);
 		in_input = (fun s p l ->
-			let n = Pervasives.input ch s p l in
+			let n = Pervasives.input ch (Bytes.of_string s) p l in
 			if n = 0 then raise No_more_input;
 			n
 		);
@@ -267,7 +267,7 @@ let input_channel ch =
 let output_channel ch =
 	{
 		out_write = (fun c -> output_char ch c);
-		out_output = (fun s p l -> Pervasives.output ch s p l; l);
+		out_output = (fun s p l -> Pervasives.output ch (Bytes.of_string s) p l; l);
 		out_close = (fun () -> Pervasives.close_out ch);
 		out_flush = (fun () -> Pervasives.flush ch);
 	}
@@ -290,7 +290,7 @@ let input_enum e =
 					match Enum.get e with
 					| None -> l
 					| Some c ->
-						String.unsafe_set s p c;
+						String.unsafe_set (Bytes.of_string s) p c;
 						loop (p + 1) (l - 1)
 			in
 			let k = loop p l in
@@ -349,7 +349,7 @@ let pipe() =
 	in
 	let input = {
 		in_read = read;
-		in_input = input;
+		in_input = (fun a b c -> input (Bytes.of_string a) b c);
 		in_close = (fun () -> ());
 	} in
 	let output = {
@@ -706,7 +706,7 @@ class out_chars ch =
   end
 
 let from_in_channel ch =
-	let cbuf = String.create 1 in
+	let cbuf = Bytes.to_string (String.create 1) in
 	let read() =
 		try
 			if ch#input cbuf 0 1 = 0 then raise Sys_blocked_io;
@@ -723,9 +723,9 @@ let from_in_channel ch =
 		~close:ch#close_in
 
 let from_out_channel ch =
-	let cbuf = String.create 1 in
+	let cbuf = Bytes.to_string (String.create 1) in
 	let write c =
-		String.unsafe_set cbuf 0 c;
+		String.unsafe_set (Bytes.of_string cbuf) 0 c;
 		if ch#output cbuf 0 1 = 0 then raise Sys_blocked_io;
 	in
 	let output s p l =
@@ -742,7 +742,7 @@ let from_in_chars ch =
 		let i = ref 0 in
 		try
 			while !i < l do
-				String.unsafe_set s (p + !i) (ch#get());
+				String.unsafe_set (Bytes.of_string s) (p + !i) (ch#get());
 				incr i
 			done;
 			l

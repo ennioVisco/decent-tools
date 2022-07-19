@@ -1,0 +1,9 @@
+(executable
+ (public_name decent)
+ (name main)
+ (libraries decent))
+
+; TODO: remove the following block, added for compatibility of old code
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

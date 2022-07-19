@@ -166,15 +166,15 @@ let relevant_ap (i: image list) (alpha: alphabet) =
       | _ -> []
 
   in
-  let ap_remaining = sort_uniq compare (remaining_ap i) in
-  let sorted_alpha = fast_sort compare alpha in
+  let ap_remaining = sort_uniq String.compare (remaining_ap i) in
+  let sorted_alpha = fast_sort String.compare alpha in
   (* Should be in O(n) as both lists are sorted (so the total function should be in
     O(n * log(n)) because of the sort which is better than a naive way of doing it) *)
   let rec intersect (ap_r: string list) (alpha: string list) =
     match ap_r, alpha with
       | [], _ | _, [] -> []
       | hd1::tl1, hd2::tl2 when hd1 = hd2 -> [hd1] @ (intersect tl1 tl2)
-      | hd1::tl1, hd2::tl2 -> if (compare hd1 hd2) < 0 then (intersect tl1 alpha)
+      | hd1::tl1, hd2::tl2 -> if (String.compare hd1 hd2) < 0 then (intersect tl1 alpha)
                                                         else (intersect ap_r tl2) 
   (* The "relevant" list of atomic propositions is the intersection between the local alphabet
   and the un-evaluated atomic propositions *)
