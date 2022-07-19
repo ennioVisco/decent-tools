@@ -116,7 +116,7 @@ let slice ?(first=0) ?(last=Sys.max_string_length) s =
 	if i>=j || i=length s then
 		Bytes.to_string (create 0)
         else
-          	 sub s i (j-i)
+          	sub s i (j-i)
 
 let lchop s =
 	if s = "" then "" else sub s 1 (length s - 1)

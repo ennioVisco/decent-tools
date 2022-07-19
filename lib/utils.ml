@@ -75,10 +75,10 @@ let rec div_list (l1: float list) (l2: float list) =
 (* Returns the number of different element between both lists. If they do not have the same size, then the elements of the
   smaller list are compared to the corresponding ones in the larger list and the remaining element of the latter are not
   compared to anything *)
-  let rec nb_diff_list (l1: 'a list) (l2: 'a list) =
-    match l1, l2 with
-        [], _ | _, [] -> 0
-      | hd1::tl1, hd2::tl2 -> if (mem hd1 l2) && (mem hd2 l1) then nb_diff_list tl1 tl2 else 1 + nb_diff_list tl1 tl2
+let rec nb_diff_list (l1: 'a list) (l2: 'a list) =
+  match l1, l2 with
+      [], _ | _, [] -> 0
+    | hd1::tl1, hd2::tl2 -> if (mem hd1 l2) && (mem hd2 l1) then nb_diff_list tl1 tl2 else 1 + nb_diff_list tl1 tl2
 
 let make_list (size:int) (fill_function:int -> 'a):'a list =
   let rec list_of_indexes n = if n=1 then [1] else (list_of_indexes (n-1))@[n] in
