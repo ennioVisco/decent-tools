@@ -43,13 +43,12 @@ LTL formulae are enforced using three different algorithms:
 Decent requires GNU Make, [OCaml](https://ocaml.org) and a few OCaml extensions which can be easily installed with [opam](https://opam.ocaml.org).
 Additional required packages are:
   - oasis
-  - camlp4
+  - camlp5
   - batteries
   - ocamlbuild
   - ocamlfind
 
-Decent has been built in May 2022 with OCaml 4.08.1. Later versions of OCaml seem not compatible with camlp4.
-Note that OCaml 4.08.1 has been released in June 2019, therefore, if you install newer versions of OCaml, you would probably get a 2.1+ version of Opam CLI which is not compatible. However, you can easily switch to 2.0 by setting an environment variable, e.g. (for the current CLI session), `export OPAMCLI=2.0`.
+Decent has been last built in July 2022 with OCaml 4.14.0. Later versions of OCaml may not be compatible.
 
 ## 3. Installation
 
