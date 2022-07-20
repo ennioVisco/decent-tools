@@ -4,7 +4,7 @@ open List
 let max (a: int) (b: int): int  =
 if a > b then a else b
   
-let round_generic (f:float) (precision : int) : float =
+let round_generic (f : float) (precision : int) : float =
   let candidate = (floor (f *. (10. ** float_of_int precision))) /. (10. ** float_of_int precision) in
   if candidate > 10000. then
     floor (candidate)

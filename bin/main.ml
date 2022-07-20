@@ -11,46 +11,12 @@ open Common_test
 open Config
 open Headers
 open Utils
+open Output
+open Settings
 
-let seed = ref 0
-let enforce = ref false
-let optimistic = ref false
-let print_debug = ref false
-let produce_tex = ref false
-let formula_file_name = ref ""
-let nb_formula = ref 0
-let formula_list : ltl list ref = ref []
-let nbtests = ref 0
-let sizeform = ref 0
-let maxsizeform = ref 0
-let sizetrace = ref 0
-let dalphabet_string = ref ""
-let dalphabet = ref []
-let alphabet_string = ref ""
-let alphabet = ref []
-let multi_alpha_f = ref ""
-let n_alpha = ref 0
-let dalphabet_list : d_alphabet list ref = ref []
-let abscence = ref false
-let existence = ref false
-let bexistence = ref false
-let universality = ref false
-let response = ref false
-let precedence_chain = ref false
-let precedence = ref false
-let response_chain = ref false
-let constrained_chain = ref false
-let bias = ref false
-let precision = ref 3
-let eval = ref false
-let file_name = ref ""
-let stat_file_name = ref ""
-let keep_samples = ref false
-let nb_samples = ref 0
-let counter_tests = ref 0
-let counter_samples = ref 0
-
-let iteration_counter = ref 0
+let cent_trace_info = Stats.create_trace_info ()
+let decent_trace_info = Stats.create_trace_info ()
+let odecent_trace_info = Stats.create_trace_info ()
 
 let cent_trace_len = ref 0 and decent_trace_len = ref 0 and odecent_trace_len = ref 0 and cent_num_mess = ref 0 and decent_num_mess = ref 0 and odecent_num_mess = ref 0 and cent_size_mess = ref 0. and decent_size_mess = ref 0. and odecent_size_mess = ref 0. and cent_nb_progressions = ref 0  and decent_nb_progressions = ref 0 and odecent_nb_progressions = ref 0
 
@@ -66,20 +32,6 @@ let delay = ref 0 and odelay = ref 0
 let formula = ref False
 
 let max_delay = ref 0 and max_odelay = ref 0
-
-let rec gen_space (n:int) =
-  if (n<=0) then ""
-  else " "^gen_space(n-1)
-
-let gen_cell (s:string) (n:int)=
-  gen_space((n-(String.length s))/2)^s^gen_space((n-(String.length s))/2)
-
-let adjust_string (s:string) (n:int) =
-  if (String.length s = n) then s
-  else (if (String.length s <= n) then s^(gen_space(n-(String.length s))) else s)
-
-let prepare_display (s:string) (n:int) : string =
-  adjust_string (gen_cell s n) n
 
 let usage = "usage: " ^ Sys.argv.(0) ^ " [-n int]"
 
@@ -126,9 +78,6 @@ let speclist = [
 
 ]
 
-let round (f:float) : float = round_generic f !precision
-
-
 let compute_avg (the_list: 'a list) =
   let dalpha_length_tmp = ref 0 and
   net_depth_tmp = ref 0 and
@@ -162,19 +111,19 @@ let compute_avg (the_list: 'a list) =
   List.iter summing the_list;
   let size = float_of_int (List.length the_list) in
   let dalpha_length_avg = float_of_int !dalpha_length_tmp /. size and
-    net_depth_avg = float_of_int !net_depth_tmp  /. size and
-    cent_trace_len_avg = float_of_int !cent_trace_len_tmp /. size and
-    decent_trace_len_avg = float_of_int !decent_trace_len_tmp    /. size and
-    odecent_trace_len_avg = float_of_int !odecent_trace_len_tmp  /. size and
-    cent_num_mess_avg =  float_of_int !cent_num_mess_tmp  /. size and
-    decent_num_mess_avg = float_of_int !decent_num_mess_tmp  /. size and
-    odecent_num_mess_avg = float_of_int !odecent_num_mess_tmp  /. size and
-    cent_size_mess_avg = !cent_size_mess_tmp  /. size and
-    decent_size_mess_avg = !decent_size_mess_tmp  /. size and
-    odecent_size_mess_avg =  !odecent_size_mess_tmp  /. size and
-    cent_nb_progressions_avg =  float_of_int !cent_nb_progressions_tmp  /. size and
-    decent_nb_progressions_avg =  float_of_int !decent_nb_progressions_tmp  /. size and
-    odecent_nb_progressions_avg =  float_of_int !odecent_nb_progressions_tmp  /. size in
+  net_depth_avg = float_of_int !net_depth_tmp  /. size and
+  cent_trace_len_avg = float_of_int !cent_trace_len_tmp /. size and
+  decent_trace_len_avg = float_of_int !decent_trace_len_tmp    /. size and
+  odecent_trace_len_avg = float_of_int !odecent_trace_len_tmp  /. size and
+  cent_num_mess_avg =  float_of_int !cent_num_mess_tmp  /. size and
+  decent_num_mess_avg = float_of_int !decent_num_mess_tmp  /. size and
+  odecent_num_mess_avg = float_of_int !odecent_num_mess_tmp  /. size and
+  cent_size_mess_avg = !cent_size_mess_tmp  /. size and
+  decent_size_mess_avg = !decent_size_mess_tmp  /. size and
+  odecent_size_mess_avg =  !odecent_size_mess_tmp  /. size and
+  cent_nb_progressions_avg =  float_of_int !cent_nb_progressions_tmp  /. size and
+  decent_nb_progressions_avg =  float_of_int !decent_nb_progressions_tmp  /. size and
+  odecent_nb_progressions_avg =  float_of_int !odecent_nb_progressions_tmp  /. size in
 
   (dalpha_length_avg,
    net_depth_avg,
@@ -266,18 +215,18 @@ let print_results (dalpha_length, net_depth, number, cent_trace_len_tmp, decent_
     let dalpha_length_string = prepare_display (string_of_float dalpha_length) 7  and
     net_depth_string = prepare_display (string_of_float net_depth) 7  and
     number_string = prepare_display (string_of_float number) 7 and
-    cent_trace_len_tmp_string = prepare_display (string_of_float (round cent_trace_len_tmp)) cell_size_medium and
-    decent_trace_len_tmp_string = prepare_display (string_of_float (round decent_trace_len_tmp)) cell_size_medium and
-    odecent_trace_len_tmp_string = prepare_display (string_of_float (round odecent_trace_len_tmp)) cell_size_medium and
-    cent_num_mess_tmp_string = prepare_display (string_of_float (round cent_num_mess_tmp)) cell_size_medium and
-    decent_num_mess_tmp_string = prepare_display (string_of_float (round decent_num_mess_tmp)) cell_size_medium and
-    odecent_num_mess_tmp_string = prepare_display (string_of_float (round odecent_num_mess_tmp)) cell_size_medium and
-    cent_size_mess_tmp_string = prepare_display (string_of_float (round cent_size_mess_tmp)) cell_size_medium and
-    decent_size_mess_tmp_string = prepare_display (string_of_float (round decent_size_mess_tmp)) cell_size_medium and
-    odecent_size_mess_tmp_string = prepare_display (string_of_float (round odecent_size_mess_tmp)) cell_size_medium and
-    cent_nb_progressions_tmp_string = prepare_display (string_of_float (round cent_nb_progressions_tmp)) cell_size_medium and
-    decent_nb_progressions_tmp_string = prepare_display (string_of_float (round decent_nb_progressions_tmp)) cell_size_medium and
-    odecent_nb_progressions_tmp_string = prepare_display (string_of_float (round odecent_nb_progressions_tmp)) cell_size_medium and
+    cent_trace_len_tmp_string = prepare_display_and_round cent_trace_len_tmp cell_size_medium and
+    decent_trace_len_tmp_string = prepare_display_and_round decent_trace_len_tmp cell_size_medium and
+    odecent_trace_len_tmp_string = prepare_display_and_round odecent_trace_len_tmp cell_size_medium and
+    cent_num_mess_tmp_string = prepare_display_and_round cent_num_mess_tmp cell_size_medium and
+    decent_num_mess_tmp_string = prepare_display_and_round decent_num_mess_tmp cell_size_medium and
+    odecent_num_mess_tmp_string = prepare_display_and_round odecent_num_mess_tmp cell_size_medium and
+    cent_size_mess_tmp_string = prepare_display_and_round cent_size_mess_tmp cell_size_medium and
+    decent_size_mess_tmp_string = prepare_display_and_round decent_size_mess_tmp cell_size_medium and
+    odecent_size_mess_tmp_string = prepare_display_and_round odecent_size_mess_tmp cell_size_medium and
+    cent_nb_progressions_tmp_string = prepare_display_and_round cent_nb_progressions_tmp cell_size_medium and
+    decent_nb_progressions_tmp_string = prepare_display_and_round decent_nb_progressions_tmp cell_size_medium and
+    odecent_nb_progressions_tmp_string = prepare_display_and_round odecent_nb_progressions_tmp cell_size_medium and
     comma = "|" in
     dalpha_length_string
     ^comma^net_depth_string
@@ -721,7 +670,6 @@ let perform_test_patterns (kind:string) =
   cent_nb_progressions_trin := round (!cent_nb_progressions_trin /. float_of_int(!counter_samples));
   decent_nb_progressions_trin := round (!decent_nb_progressions_trin /. float_of_int(!counter_samples));
   odecent_nb_progressions_trin := round (!odecent_nb_progressions_trin /. float_of_int(!counter_samples));
-
 
   let r_form = kind
   and r_counter_samples = string_of_int (!counter_samples)
