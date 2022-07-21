@@ -824,7 +824,7 @@ let _ =
   Check that the arguments are correctly passed to the program
   *)
 
-  if (not !enforce && (!seed <> 10001 || !formula_file_name <> "" || !nb_formula <> 0 || !multi_alpha_f <> "" || !n_alpha <> 0 || !print_debug <> false)) then (
+  if (not !enforce && (!seed <> 0 || !formula_file_name <> "" || !nb_formula <> 0 || !multi_alpha_f <> "" || !n_alpha <> 0 || !print_debug <> false)) then (
     print_endline "An unsupported option for monitoring was given to the program";
     exit(1)
   );
