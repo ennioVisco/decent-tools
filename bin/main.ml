@@ -272,12 +272,19 @@ let nbcomp_depth_test (size_form:int) =
 
 let perform_test (size_form:int) =
 
-  cent_trace_len := 0; decent_trace_len := 0; odecent_trace_len := 0; cent_num_mess := 0; decent_num_mess := 0; odecent_num_mess := 0; cent_size_mess := 0.; decent_size_mess := 0.; odecent_size_mess := 0.; cent_nb_progressions := 0; decent_nb_progressions := 0; odecent_nb_progressions := 0; max_delay := 0; max_odelay := 0; delay := 0; odelay := 0;
+  Stats.reset cent_trace_info;
+  Stats.reset decent_trace_info;
+  Stats.reset odecent_trace_info;
+  
 
-  cent_trace_len_var := 0.; decent_trace_len_var := 0.; odecent_trace_len_var := 0.; cent_num_mess_var := 0.; decent_num_mess_var := 0.; odecent_num_mess_var := 0.; cent_size_mess_var := 0.; decent_size_mess_var := 0.; odecent_size_mess_var := 0.; cent_nb_progressions_var := 0.; decent_nb_progressions_var := 0.; odecent_nb_progressions_var := 0.; delay_var := 0.; odelay_var := 0.;
+  cent_trace_len := 0; decent_trace_len := 0; odecent_trace_len := 0; cent_num_mess := 0; decent_num_mess := 0; odecent_num_mess := 0; cent_size_mess := 0.; decent_size_mess := 0.; odecent_size_mess := 0.; cent_nb_progressions := 0; decent_nb_progressions := 0; odecent_nb_progressions := 0; 
+
+  cent_trace_len_var := 0.; decent_trace_len_var := 0.; odecent_trace_len_var := 0.; cent_num_mess_var := 0.; decent_num_mess_var := 0.; odecent_num_mess_var := 0.; cent_size_mess_var := 0.; decent_size_mess_var := 0.; odecent_size_mess_var := 0.; cent_nb_progressions_var := 0.; decent_nb_progressions_var := 0.; odecent_nb_progressions_var := 0.; 
 
   cent_num_mess_trin := 0.; decent_num_mess_trin := 0.; odecent_num_mess_trin := 0.; cent_size_mess_trin := 0.; decent_size_mess_trin := 0.; odecent_size_mess_trin := 0.; cent_nb_progressions_trin := 0.; decent_nb_progressions_trin := 0.; odecent_nb_progressions_trin := 0. ;
 
+  max_delay := 0; max_odelay := 0; delay := 0; odelay := 0;
+  delay_var := 0.; odelay_var := 0.;
 
   counter_tests := 0;
   counter_samples := 0;
