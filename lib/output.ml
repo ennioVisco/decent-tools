@@ -22,3 +22,10 @@ let rounded_string x = string_of_float (round x)
 let prepare_display_and_round f n = prepare_display (rounded_string f) n
 
 let prepare_display_no_round f n = prepare_display (string_of_float f) n
+
+let concat ?(sep="") l =
+  let rec loop acc = function
+    | [] -> acc
+    | h::t -> loop (acc^sep^h) t
+  in
+  loop (List.hd l) (List.tl l)

@@ -287,7 +287,7 @@ let perform_test (size_form:int) =
   counter_tests := 0;
   counter_samples := 0;
   while (!counter_samples < !nb_samples && !counter_tests < !nbtests) do
-    let (meaningful, cent_trace_len_tmp, decent_trace_len_tmp, odecent_trace_len_tmp, cent_num_mess_tmp, decent_num_mess_tmp, odecent_num_mess_tmp, cent_size_mess_tmp, decent_size_mess_tmp, odecent_size_mess_tmp, cent_nb_progressions_tmp, decent_nb_progressions_tmp, odecent_nb_progressions_tmp)
+    let (meaningful, cent_trace_len_tmp, decent_trace_len_tmp, odecent_trace_len_tmp, cent_num_mess_tmp, decent_num_mess_tmp, odecent_num_mess_tmp, cent_size_mess_tmp, decent_size_mess_tmp, odecent_size_mess_tmp, cent_nb_progressions_tmp, decent_nb_progressions_tmp, odecent_nb_progressions_tmp, formula_tmp, trace_tmp)
       = generate_compared_results_efficient !dalphabet size_form !sizetrace !bias in
     (
       counter_tests := !counter_tests + 1;
@@ -309,9 +309,31 @@ let perform_test (size_form:int) =
               and s_cent_nb_progressions = string_of_int (cent_nb_progressions_tmp)
               and s_decent_nb_progressions = string_of_int (decent_nb_progressions_tmp)
               and s_odecent_nb_progressions = string_of_int (odecent_nb_progressions_tmp)
+              and s_formula = Ltl.string_rep formula_tmp
+              and s_trace = stringrep_dtrace trace_tmp
               in
-              let space = " " in
-              let one_line = s_size_form^space^s_cent_trace_len^space^s_decent_trace_len^space^s_odecent_trace_len^space^s_cent_num_mess^space^s_decent_num_mess^space^s_odecent_num_mess^space^s_cent_size_mess^space^s_decent_size_mess^space^s_odecent_size_mess^space^s_cent_nb_progressions^space^s_decent_nb_progressions^space^s_odecent_nb_progressions  in
+              let space = " @ " in
+              let one_line = 
+                s_size_form ^ space ^
+                (* Trace Length stats *)
+                s_cent_trace_len ^ space ^ 
+                s_decent_trace_len ^ space ^ 
+                s_odecent_trace_len ^ space ^
+                (* Number of messages *)
+                s_cent_num_mess ^ space ^ 
+                s_decent_num_mess ^ space ^ 
+                s_odecent_num_mess ^ space ^ 
+                (* Size of messages *)
+                s_cent_size_mess ^ space ^ 
+                s_decent_size_mess ^ space ^ 
+                s_odecent_size_mess ^ space ^
+                (* Number of progressions *) 
+                s_cent_nb_progressions ^ space ^ 
+                s_decent_nb_progressions ^ space ^ 
+                s_odecent_nb_progressions ^ space ^ 
+                (* Formula & trace *)
+                s_formula ^ space ^ 
+                s_trace  in
               write_to_file !file_name one_line
             );
 
@@ -1049,7 +1071,10 @@ let _ =
 
       if (!keep_samples) then
         (
-          write_to_file !file_name ("x nb_comp nb_ap cent_trace_len decent_trace_len odecent_trace_len cent_num_mess decent_num_mess odecent_num_mess cent_size_mess decent_size_mess odecent_size_mess cent_nb_progressions decent_nb_progressions odecent_nb_progressions")
+          let space = " @ " in
+          write_to_file !file_name (Output.concat ~sep:space ["x"; 
+          (* " nb_comp"; " nb_ap";  *)
+          " cent_trace_len"; " decent_trace_len"; " odecent_trace_len"; " cent_num_mess"; " decent_num_mess"; " odecent_num_mess"; " cent_size_mess"; " decent_size_mess"; " odecent_size_mess"; " cent_nb_progressions"; " decent_nb_progressions"; " odecent_nb_progressions"; " formula"; " trace"])
         );
 
       if (!sizeform>0 || !maxsizeform >0) then (
