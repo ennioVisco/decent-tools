@@ -20,14 +20,15 @@ let odecent_trace_info = Stats.create_trace_info ()
 
 let cent_trace_len = ref 0 and decent_trace_len = ref 0 and odecent_trace_len = ref 0 and cent_num_mess = ref 0 and decent_num_mess = ref 0 and odecent_num_mess = ref 0 and cent_size_mess = ref 0. and decent_size_mess = ref 0. and odecent_size_mess = ref 0. and cent_nb_progressions = ref 0  and decent_nb_progressions = ref 0 and odecent_nb_progressions = ref 0
 
-let cent_trace_len_avg = ref 0. and decent_trace_len_avg = ref 0. and odecent_trace_len_avg = ref 0. and cent_num_mess_avg = ref 0. and decent_num_mess_avg = ref 0. and odecent_num_mess_avg = ref 0. and cent_size_mess_avg = ref 0. and decent_size_mess_avg = ref 0. and odecent_size_mess_avg = ref 0. and cent_nb_progressions_avg = ref 0.  and decent_nb_progressions_avg = ref 0. and odecent_nb_progressions_avg = ref 0. and delay_avg = ref 0. and odelay_avg = ref 0.
+let cent_trace_len_avg = ref 0. and decent_trace_len_avg = ref 0. and odecent_trace_len_avg = ref 0. and cent_num_mess_avg = ref 0. and decent_num_mess_avg = ref 0. and odecent_num_mess_avg = ref 0. and cent_size_mess_avg = ref 0. and decent_size_mess_avg = ref 0. and odecent_size_mess_avg = ref 0. and cent_nb_progressions_avg = ref 0.  and decent_nb_progressions_avg = ref 0. and odecent_nb_progressions_avg = ref 0. 
 
-let cent_trace_len_var = ref 0. and decent_trace_len_var = ref 0. and odecent_trace_len_var = ref 0. and cent_num_mess_var = ref 0. and decent_num_mess_var = ref 0. and odecent_num_mess_var = ref 0. and cent_size_mess_var = ref 0. and decent_size_mess_var = ref 0. and odecent_size_mess_var = ref 0. and cent_nb_progressions_var = ref 0.  and decent_nb_progressions_var = ref 0. and odecent_nb_progressions_var = ref 0. and delay_var = ref 0. and odelay_var = ref 0.
+let cent_trace_len_var = ref 0. and decent_trace_len_var = ref 0. and odecent_trace_len_var = ref 0. and cent_num_mess_var = ref 0. and decent_num_mess_var = ref 0. and odecent_num_mess_var = ref 0. and cent_size_mess_var = ref 0. and decent_size_mess_var = ref 0. and odecent_size_mess_var = ref 0. and cent_nb_progressions_var = ref 0.  and decent_nb_progressions_var = ref 0. and odecent_nb_progressions_var = ref 0. 
 
 let cent_num_mess_trin = ref 0. and decent_num_mess_trin = ref 0. and odecent_num_mess_trin = ref 0. and cent_size_mess_trin = ref 0. and decent_size_mess_trin = ref 0. and odecent_size_mess_trin = ref 0. and cent_nb_progressions_trin = ref 0.  and decent_nb_progressions_trin = ref 0. and odecent_nb_progressions_trin = ref 0.
 
 
-
+let delay_avg = ref 0. and odelay_avg = ref 0.
+let delay_var = ref 0. and odelay_var = ref 0.
 let delay = ref 0 and odelay = ref 0
 let formula = ref False
 
