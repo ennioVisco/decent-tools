@@ -315,6 +315,9 @@ let rec generate_compared_results_efficient (alpha:d_alphabet) (size_form:int) (
        smesscent, smessdecent, smessodecent,
   nbProgCent, nbProgDecent, nbProgODecent) = 
     compare_results formula alpha trace in
+    print_endline "------------------------------------------------------";
+    print_endline (Ltl.string_rep formula);
+    print_endline "------------------------------------------------------";
   let meaningful = verdict_cent = verdict_Mdecent && verdict_cent = verdict_Odecent && List.length traceNeededCent < size_trace && List.length traceNeededMDeCent < size_trace && List.length traceNeededODecent < size_trace && List.length traceNeededCent > 3* (size_form -1) in
   (meaningful, List.length traceNeededCent + 1 , List.length traceNeededMDeCent + 1, List.length traceNeededODecent + 1,ncent,nMDecent,nODecent,smesscent,smessdecent,smessodecent, nbProgCent, nbProgDecent, nbProgODecent)
 

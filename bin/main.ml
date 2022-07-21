@@ -268,8 +268,6 @@ let nbcomp_depth_test (size_form:int) =
   done;
   print_separation_line_eval ()
 
-
-
 let perform_test (size_form:int) =
 
   Stats.reset cent_trace_info;
