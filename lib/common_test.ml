@@ -390,7 +390,7 @@ let compute_one_result (dalpha:d_alphabet) (trace:trace) (formula:ltl) =
   let meaningful = verdict_cent = verdict_Mdecent && verdict_cent = verdict_Odecent && List.length traceNeededCent < size_trace && List.length traceNeededMDeCent < size_trace && List.length traceNeededODecent < size_trace in
   (meaningful, List.length dalpha, depth_with_one_dalpha dalpha formulad, List.length traceNeededCent, List.length traceNeededMDeCent, List.length traceNeededODecent, ncent,nMDecent, nODecent, smesscent, smessdecent, smessodecent, nbProgCent, nbProgDecent, nbProgODecent)
 
-let make_one_eval_test (alpha:alphabet) (size_form:int) (size_trace:int) =
+let make_one_eval_test (seed: int) (alpha:alphabet) (size_form:int) (size_trace:int) =
   let dalphabets = generate_all_compatible_dalphabets alpha in
   print_endline (stringrep_list stringrep_dalphabet dalphabets);
   print_endline (string_of_int (List.length dalphabets));
@@ -878,19 +878,17 @@ let rec test_random (nb_test: int) (alpha: d_alphabet) (size_f: int) (size_tr: i
       test_random (nb_test - 1) alpha size_f size_tr bias
     )
 
-let test_random_formula (nb_test: int) (alpha: d_alphabet) (size_f: int) (size_tr: int) (bias: bool) (preci: int) (prt_full_stats: bool) (file: string) (produce_tex: bool) =
-  let seed = Random.int 10000 in
-  Random.init seed;
-  init_global_var prt_full_stats preci file (string_of_int size_f) produce_tex;
-  test_random nb_test alpha size_f size_tr bias;
-  display_full_statistics nb_test;
-  print_endline ("\nSeed: " ^ string_of_int seed)
 
 let test_random_formula_seeded (seed: int) (nb_test: int) (alpha: d_alphabet) (size_f: int) (size_tr: int) (bias: bool) (preci: int) (prt_full_stats: bool) (file: string) (produce_tex: bool) =
+  print_endline ("\nSeed: " ^ string_of_int seed);
   Random.init seed;
   init_global_var prt_full_stats preci file (string_of_int size_f) produce_tex;
   test_random nb_test alpha size_f size_tr bias;
   display_full_statistics nb_test
+
+let test_random_formula (nb_test: int) (alpha: d_alphabet) (size_f: int) (size_tr: int) (bias: bool) (preci: int) (prt_full_stats: bool) (file: string) (produce_tex: bool) = 
+  test_random_formula_seeded 10000 nb_test alpha size_f size_tr bias preci prt_full_stats file produce_tex
+
 
 let rec test_pattern_rec (kind: string) (nb_test: int) (alpha: d_alphabet) (size_tr: int) =
   if !prt_full then
@@ -959,15 +957,12 @@ let rec test_specific_rec (phi_l: ltl list) (alpha: d_alphabet) (size_tr: int) =
       )
     | _ -> ()
 
-let test_specific (phi_l: ltl list) (alpha: d_alphabet) (size_tr: int) (preci: int) (prt_full_stats: bool) (file: string) (produce_tex: bool) =
-  let seed = Random.int 10000 in
-  Random.init seed;
-  init_global_var prt_full_stats preci file "" produce_tex;
-  test_specific_rec phi_l alpha size_tr;
-  display_full_statistics (List.length phi_l)
 
 let test_specific_seeded (seed: int) (phi_l: ltl list) (alpha: d_alphabet) (size_tr: int) (preci: int) (prt_full_stats: bool) (file: string) (produce_tex: bool) =
   Random.init seed;
   init_global_var prt_full_stats preci file "" produce_tex;
   test_specific_rec phi_l alpha size_tr;
   display_full_statistics (List.length phi_l)
+  
+let test_specific (phi_l: ltl list) (alpha: d_alphabet) (size_tr: int) (preci: int) (prt_full_stats: bool) (file: string) (produce_tex: bool) =
+  test_specific_seeded 10000 phi_l alpha size_tr preci prt_full_stats file produce_tex;

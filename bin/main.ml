@@ -64,7 +64,7 @@ let speclist = [
   ("-prt_full", Arg.Bool  (fun prtfull -> print_full_stats := prtfull),     "bool : print full statistics [Mon]");
   ("-prt_full_stats", Arg.Bool (fun prtdebug -> print_debug := prtdebug), "bool : print statistics of all the enforcement runs [Enf]");
   ("-flipcoin", Arg.Unit (fun x -> Trace.the_distrib := FLIPCOIN), ": use the flipcoin probability distribution (uniform distribution with probability 0.5) [Mon/Enf]");
-  ("-bernouilli", Arg.Float (fun seed -> Trace.the_distrib := BERNOUILLI; Trace.seed := seed), "float : use the BERNOUILLI probability distribution (uniform distribution with a probability given as an argument) [Mon/Enf]");
+  ("-bernoulli", Arg.Float (fun seed -> Trace.the_distrib := BERNOUILLI; Trace.seed := seed), "float : use the BERNOUILLI probability distribution (uniform distribution with a probability given as an argument) [Mon/Enf]");
   ("-expo", Arg.Float (fun seed -> Trace.the_distrib := EXPO; Trace.seed := seed), "float : use the EXPONENTIAL probability distribution (the rate parameter is given as an argument) [Mon/Enf]");
   ("-beta", Arg.Tuple [Arg.Float (fun seed -> Trace.the_distrib := BETA; Trace.seeda := seed);
                        Arg.Float (fun seed -> Trace.seedb := seed)], "float float: use the BETA probability distribution (the rate parameters are given as arguments) [Mon/Enf]");
@@ -249,7 +249,7 @@ let nbcomp_depth_test (size_form:int) =
   print_endline "       |       |       ||            orchestration              ||                migration              ||              choreography                  ";
   print_endline "|dal.| | depth | numb. ||  |tr|   |   #msg  |  |msg|  |  #prog  ||  |tr|   |   #msg  |  |msg|  |  #prog  ||  |tr|   |   #msg  |  |msg|  |  #prog  || ";
   for i = 1 to !nbtests do
-    let one_res = make_one_eval_test !alphabet size_form !sizetrace in
+    let one_res = make_one_eval_test !seed !alphabet size_form !sizetrace in
     let one_res = List.filter (fun elt -> let (meaningful, _, _, _, _, _, _, _, _, _, _, _, _, _, _) = elt in meaningful) one_res in
     res_list := !res_list @ one_res;
   done;
@@ -852,7 +852,7 @@ let _ =
   Check that the arguments are correctly passed to the program
   *)
 
-  if (not !enforce && (!seed <> 0 || !formula_file_name <> "" || !nb_formula <> 0 || !multi_alpha_f <> "" || !n_alpha <> 0 || !print_debug <> false)) then (
+  if (not !enforce && (!formula_file_name <> "" || !nb_formula <> 0 || !multi_alpha_f <> "" || !n_alpha <> 0 || !print_debug <> false)) then (
     print_endline "An unsupported option for monitoring was given to the program";
     exit(1)
   );
