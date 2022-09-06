@@ -31,5 +31,6 @@ src/dune_rules/setup.ml
 # Decent extra files
 scripts/enforcement/experiment_*/*/*.txt
 log.txt
+*.log
 
 .idea
